@@ -1,0 +1,61 @@
+@import "../global/variables";
+@import "../components/post.scss";
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #cfd0d3;
+
+  border-radius: 1rem;
+
+  margin: 0 10vw;
+
+  position: relative;
+
+  .go-back {
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+
+    left: 0.6rem;
+    top: 0.6rem;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    button {
+      background-color: $alt-secondary-color;
+      color: #fafafafa;
+
+      margin-right: 0.8rem;
+
+      border: none;
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      transition: background-color 0.2s ease-in;
+
+      &:hover {
+        background-color: $dark-primary-color;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1165px) {
+  .background .go-back {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .background {
+    margin: 0 !important;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,32 @@
+@import "./variables";
+
+:root {
+  font-size: 58.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: $font-stack;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  // scroll-behavior: smooth;
+
+  background-color: $dark-primary-color;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: #fff;
+  background: $primary-color;
+}
+
+::selection {
+  color: #fff;
+  background: $primary-color;
+}

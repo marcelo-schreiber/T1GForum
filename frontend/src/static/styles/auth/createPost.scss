@@ -1,0 +1,187 @@
+@import "../global/variables";
+
+// Out of main div to re-usability
+button.go-back {
+  align-self: flex-start;
+  display: block;
+
+  color: #fafafafa;
+  background-color: $alt-secondary-color;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  margin: 1.5rem;
+  padding: 0.6rem;
+
+  font-size: 1.4rem;
+  font-family: $font-stack;
+  font-weight: 600;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    background-color: $dark-secondary-color;
+  }
+}
+
+.create-post-content {
+  min-height: 100vh;
+  width: 100vw;
+  font-size: 2.8rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: linear-gradient(
+    $dark-primary-color,
+    $dark-primary-color,
+    $primary-color
+  );
+
+  position: relative;
+
+  .instructions {
+    font-size: 1.5rem;
+
+    color: #fafafafa;
+
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+
+    max-width: 70vw;
+
+    a {
+      color: $alt-secondary-color;
+
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  form {
+    h1 {
+      font-size: 4.5rem;
+      line-height: 1;
+      letter-spacing: 4px;
+    }
+
+    line-height: 4.6rem;
+
+    background: #fafafafa;
+    color: #000;
+
+    text-align: center;
+
+    padding: 3.5rem;
+
+    border-radius: 15px;
+
+    textarea {
+      height: 12rem;
+      width: 42rem;
+
+      border-radius: 1rem;
+      border: 2px solid #d1d0d0fa;
+
+      background: #dddddd;
+
+      font-family: $font-stack;
+      font-size: 2.4rem;
+
+      padding: 0.4rem 0 0 0.4rem;
+
+      resize: vertical;
+
+      outline: 0;
+
+      transition: box-shadow 0.15s ease-in;
+
+      &:focus {
+        box-shadow: 0 0 8px 3px $primary-color;
+      }
+    }
+
+    select {
+      border-radius: 8px;
+      background-color: #f8f8fc;
+      border: 1px solid #dddddd;
+
+      padding: 0 1.6rem;
+      font-family: $font-stack;
+
+      font-size: 2rem;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    label {
+      margin: 1.6rem 0;
+      display: block;
+    }
+
+    label.image-selector {
+      display: inline-block;
+
+      background-color: $primary-color;
+      color: #fafafafa;
+
+      cursor: pointer;
+
+      border: 1px dashed #fafafafa;
+      border-radius: 12px;
+
+      padding: 0.6rem 4rem;
+      padding-top: 1rem;
+
+      margin-top: 0;
+    }
+
+    button[type="submit"] {
+      padding: 1.2rem 8rem;
+
+      background-color: $alt-secondary-color;
+      color: #fafafa;
+
+      border-radius: 8px;
+      border: none;
+
+      cursor: pointer;
+
+      font-size: 3rem;
+      font-family: $font-stack;
+      font-weight: 600;
+
+      text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+
+      transition: 0.1s ease-in;
+
+      &:hover {
+        background-color: $dark-secondary-color;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 395px) {
+    form {
+      textarea {
+        width: 90vw;
+      }
+
+      button[type="submit"] {
+        padding: 1rem 15vw;
+      }
+    }
+  }
+}

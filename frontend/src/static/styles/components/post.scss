@@ -1,0 +1,124 @@
+@import "../global/variables";
+
+.post {
+  background-color: #fff;
+
+  margin: 4rem 0;
+
+  border-radius: 8px;
+  border: 2px solid $alt-secondary-color;
+
+  padding: 1.5rem;
+  .author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .user {
+      display: flex;
+      align-items: center;
+    }
+
+    p {
+      font-size: 1.3rem;
+    }
+
+    a {
+      margin: 0 0.8rem;
+      color: $alt-secondary-color;
+      font-weight: bold;
+
+      font-size: 1.8rem;
+
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: $dark-secondary-color;
+      }
+    }
+  }
+
+  a.comments {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin-top: 0.8rem;
+
+    text-decoration: none;
+
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    .btn-comment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0.8rem;
+      background-color: $alt-secondary-color;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      border: none;
+
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+
+      color: #fafafa;
+
+      transition: background-color 0.2s ease-in;
+
+      &:hover {
+        background-color: $dark-secondary-color;
+      }
+    }
+
+    svg {
+      margin-left: 0.8rem;
+    }
+  }
+
+  .gray-stripe {
+    height: 2px;
+    width: 100%;
+
+    margin: 0.6rem 0;
+
+    background-color: $alt-secondary-color;
+  }
+
+  img {
+    width: 765px;
+    height: auto;
+    max-height: 850px;
+    object-fit: cover;
+  }
+
+  .description {
+    margin-top: 1.5rem;
+    text-align: justify;
+    font-size: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 1064px) {
+  .post {
+    p {
+      font-size: 0.9rem;
+    }
+
+    img {
+      width: 70vw;
+    }
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .post img {
+    width: 86vw;
+  }
+}

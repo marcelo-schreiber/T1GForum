@@ -1,0 +1,125 @@
+@import "../global/variables.scss";
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $dark-primary-color;
+
+  position: relative;
+
+  padding: 1rem 0;
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    position: absolute;
+    right: 0;
+  }
+
+  #title {
+    font-size: 5.5rem;
+    font-family: "Lobster", cursive;
+
+    color: $secondary-color;
+    letter-spacing: 2px;
+
+    text-shadow: 4px 4px rgba($color: #000000, $alpha: 0.8);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+
+    padding: 1.5rem;
+    background-color: $alt-secondary-color;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    border: none;
+
+    margin: 0 1.5rem;
+
+    font-size: 1.4rem;
+    font-family: $font-stack;
+    font-weight: 600;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+
+    text-decoration: none;
+    color: #fafafa;
+
+    transition: background-color 0.2s ease-in;
+
+    svg {
+      margin-left: 1rem;
+    }
+    &:hover {
+      background-color: $dark-secondary-color;
+    }
+  }
+  a {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+
+    color: #fafafafa;
+  }
+}
+
+@media only screen and (max-width: 1010px) {
+  #root header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    #title {
+      margin-left: 1.5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  #root header {
+    padding: 2rem 0;
+    padding-bottom: 2.5rem;
+    #title {
+      font-size: 2.8rem;
+    }
+    button {
+      padding: 1rem;
+
+      margin: 0 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  #root header {
+    padding: 4rem 0;
+    #title {
+      display: none;
+    }
+    button {
+      padding: 1rem;
+
+      svg {
+        margin-left: 0.6rem;
+
+        width: 15px;
+      }
+    }
+
+    .header-content {
+      justify-content: center;
+
+      right: 0;
+      left: 0;
+    }
+  }
+}

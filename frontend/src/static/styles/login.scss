@@ -1,0 +1,201 @@
+@import "./global/variables";
+
+.login-content {
+  min-height: 100vh;
+  max-width: 100vw;
+  background-image: linear-gradient(
+    $dark-primary-color,
+    $dark-primary-color,
+    $primary-color
+  );
+
+  font-family: $font-stack;
+  color: #000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .form-container {
+    background-color: #e0e0e0;
+    padding: 8rem 11rem;
+    position: relative;
+
+    border-radius: 15px;
+
+    a.go-back {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: $dark-primary-color;
+      }
+    }
+
+    p.go-to-register {
+      text-align: center;
+      font-size: 1.75rem;
+      line-height: 1.6;
+
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        text-decoration: none;
+
+        color: $alt-secondary-color;
+
+        transition: color 0.2s ease-in;
+
+        &:hover {
+          color: $dark-secondary-color;
+        }
+        span {
+          font-size: 1.4rem;
+
+          margin-right: 0.4rem;
+          font-weight: 800;
+
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  form#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    #login {
+      color: $dark-primary-color;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      letter-spacing: 3px;
+
+      font-size: 4rem;
+
+      margin-bottom: 3rem;
+    }
+
+    button[type="submit"] {
+      padding: 1.2rem 8rem;
+
+      background-color: $alt-secondary-color;
+
+      border-radius: 8px;
+      border: none;
+
+      cursor: pointer;
+
+      font-size: 3rem;
+      font-family: $font-stack;
+      font-weight: 600;
+      text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+
+      text-decoration: none;
+      color: #fafafa;
+
+      transition: background-color 0.2s ease-in;
+
+      &:hover {
+        background-color: $dark-secondary-color;
+      }
+    }
+
+    input {
+      margin: 3rem 0;
+      height: 5.6rem;
+      padding: 0 3rem;
+      width: 135%;
+
+      background-color: #fafafafa;
+      border: 2px solid #fff;
+
+      border-radius: 15px;
+
+      font-family: $font-stack;
+      font-size: 2.2rem;
+
+      outline: 0;
+
+      padding-left: 0.5rem;
+
+      transition: box-shadow 0.15s ease-in;
+
+      &:focus {
+        box-shadow: 0 0 8px 3px $primary-color;
+      }
+    }
+  }
+}
+
+.Toastify__toast-body {
+  font-size: 1.85rem;
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 750px) {
+  .login-content .form-container {
+    padding: 9rem;
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  .login-content .form-container {
+    padding: 8rem;
+
+    form#login-form {
+      input {
+        width: 100%;
+      }
+
+      button[type="submit"] {
+        padding: 0.8rem 8rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 565px) {
+  .login-content .form-container {
+    padding: 7rem 3.5rem;
+
+    p.go-to-register {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 455px) {
+  .login-content .form-container {
+    padding: 6rem 2rem;
+
+    form#login-form {
+      input {
+        width: 65vw;
+        margin-top: 1.4rem;
+        height: 4rem;
+        font-size: 1.5rem;
+      }
+
+      button[type="submit"] {
+        padding: 0.6rem 6rem;
+        font-size: 2rem;
+      }
+    }
+  }
+}

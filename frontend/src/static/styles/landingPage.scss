@@ -1,0 +1,146 @@
+@import "./global/variables";
+
+.landing-content {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    $dark-primary-color,
+    $dark-primary-color,
+    $primary-color
+  );
+
+  font-family: $font-stack;
+  color: #fafafa;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  p.share {
+    max-width: 55vw;
+    text-align: center;
+    font-size: 6.3rem;
+
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    position: absolute;
+    top: 4rem;
+    left: 7.5rem;
+
+    text-align: center;
+    font-size: 1.4rem;
+
+    span {
+      font-size: 2rem;
+      font-family: "Lobster", cursive;
+
+      color: $secondary-color;
+      letter-spacing: 2px;
+    }
+  }
+
+  #github {
+    text-decoration: none;
+    color: #fafafa;
+
+    transition: color 0.2s ease-in;
+
+    &:hover {
+      color: $secondary-color;
+    }
+
+    svg {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+    }
+  }
+
+  .button-container button {
+    padding: 4rem;
+    margin: 0 1.5rem;
+
+    background-color: $alt-secondary-color;
+
+    border-radius: 8px;
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 3rem;
+    font-family: $font-stack;
+    font-weight: 600;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+
+    text-decoration: none;
+    color: #fafafa;
+
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+      background-color: $dark-secondary-color;
+    }
+  }
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 1345px) {
+  .landing-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 710px) {
+  .landing-content .share {
+    position: relative;
+    top: 6rem;
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .landing-content .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      margin-top: 3.5rem;
+      padding: 3.7rem;
+
+      a {
+        font-size: 2.6rem;
+      }
+    }
+  }
+
+  h1.welcome {
+    font-size: 1rem;
+    top: 3rem;
+    left: 5rem;
+
+    span {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .landing-content {
+    span {
+      font-size: 3.25rem;
+      font-family: "Lobster", cursive;
+      text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    p.share {
+      font-size: 3.1rem;
+    }
+
+    .button-container button {
+      padding: 2rem;
+    }
+  }
+}
