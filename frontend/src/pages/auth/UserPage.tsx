@@ -50,25 +50,42 @@ export default function UserPage({ setAuth }: AuthProps) {
     <>
       <Header setAuth={setAuth} />
       <div className="background">
-        <div style={{ margin: "0 10vw" }}>
-          <div className="go-back">
-            <button onClick={history.goBack}>
-              <FaAngleLeft size={32} />
-            </button>
-            {userSeingPost.name === username ? (
-              <p>Your page</p>
-            ) : (
-              <p>{username}'s page</p>
-            )}
-          </div>
+        {userPosts.length > 0 ? (
+          <div style={{ margin: "0 10vw" }}>
+            <div className="go-back">
+              <button onClick={history.goBack}>
+                <FaAngleLeft size={32} />
+              </button>
+              {userSeingPost.name === username ? (
+                <p>Your page</p>
+              ) : (
+                <p>{username}'s page</p>
+              )}
+            </div>
 
-          <div className="posts-container">
-            {userPosts.map((post: PostItems, i) => {
-              return <Post postProps={post} key={i} isSingle={false} />;
-            })}
+            <div className="posts-container">
+              {userPosts.map((post: PostItems, i) => {
+                return <Post postProps={post} key={i} isSingle={false} />;
+              })}
+            </div>
           </div>
-        </div>
+        ) : (
+          <>
+            <div className="go-back">
+              <button onClick={history.goBack}>
+                <FaAngleLeft size={32} />
+              </button>
+            </div>
+            <div className="no-posts">
+              <p>
+                No posts were made in this account, please, create one by clicking in
+                'Post something'
+              </p>
+            </div>
+          </>
+        )}
       </div>
+      )
     </>
   );
 }

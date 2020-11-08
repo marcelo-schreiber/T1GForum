@@ -11,4 +11,10 @@ const devConfig = {
   port: parseInt(process.env.PG_PORT),
 };
 
-export const pool = new Pool(devConfig);
+const proConfig = {
+  connectionString: process.env.DATABASE_URL,
+};
+
+export const pool = new Pool(
+  process.env.NODE_ENV === "production" ? proConfig : devConfig
+);

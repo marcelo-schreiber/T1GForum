@@ -13,34 +13,50 @@
 
   position: relative;
 
-  .go-back {
+  .no-posts {
     display: flex;
     align-items: center;
+    justify-content: center;
 
-    position: absolute;
+    margin: 2.5rem 0;
 
-    left: 0.6rem;
-    top: 0.6rem;
+    height: 20rem;
 
-    font-size: 1.6rem;
-    font-weight: 600;
+    p {
+      max-width: 95vw;
+      text-align: center;
+      font-size: 2.6rem;
+    }
+  }
+}
 
-    button {
-      background-color: $alt-secondary-color;
-      color: #fafafafa;
+.go-back {
+  display: flex;
+  align-items: center;
 
-      margin-right: 0.8rem;
+  position: absolute;
 
-      border: none;
-      border-radius: 8px;
+  left: 0.6rem;
+  top: 0.6rem;
 
-      cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 600;
 
-      transition: background-color 0.2s ease-in;
+  button {
+    background-color: $alt-secondary-color;
+    color: #fafafafa;
 
-      &:hover {
-        background-color: $dark-primary-color;
-      }
+    margin-right: 0.8rem;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease-in;
+
+    &:hover {
+      background-color: $dark-primary-color;
     }
   }
 }

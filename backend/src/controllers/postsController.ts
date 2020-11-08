@@ -61,7 +61,12 @@ export default {
       );
 
       const username = usernameQuery.rows[0].name;
-      const imageURL = `http://localhost:8080/uploads/${req.file.filename}`;
+
+      if (process.env.NODE_ENV === "production") {
+        var imageURL = `http://t1gforum.herokuapp.com/uploads/${req.file.filename}`;
+      } else {
+        var imageURL = `http://localhost:8080/uploads/${req.file.filename}`;
+      }
       const { description, section } = req.body;
 
       await pool.query(
