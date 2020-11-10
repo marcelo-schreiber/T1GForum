@@ -11,7 +11,7 @@ export const validJwt = (req, res, next) => {
   }
 
   try {
-    const verification = verify(token, process.env.jwtSecret);
+    const verification = verify(token, `${process.env.JWT_SECRET_KEY}`);
     req.user = verification.user; // set req.user to it's own user_id
 
     next();

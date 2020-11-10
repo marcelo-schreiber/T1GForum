@@ -37,7 +37,7 @@ export default {
 
       const jwtToken = jwtGenerator(newUser.rows[0].user_id); // generate JWT with user's uuid
 
-      return res.json({ jwtToken }); // jwt token for navigation in the future
+      return res.status(201).json({ jwtToken }); // jwt token for navigation in the future
     } catch (err) {
       console.error(err.message);
       handleError.handleServerError;
@@ -61,7 +61,10 @@ export default {
 
       const jwtToken = jwtGenerator(user.rows[0].user_id); // generate JWT with user's uuid
 
-      return res.json({ jwtToken });
+      return res
+        .status(200)
+
+        .json({ jwtToken });
     } catch (err) {
       console.error(err.message);
       handleError.handleServerError;
@@ -69,7 +72,7 @@ export default {
   },
   async verifyUser(req, res: Response) {
     try {
-      res.json(true);
+      res.status(200).json(true);
     } catch (err) {
       console.error(err.message);
       handleError.handleServerError;

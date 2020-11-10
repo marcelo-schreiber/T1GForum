@@ -8,5 +8,5 @@ export const jwtGenerator = user_uuid => {
     user: user_uuid,
   };
 
-  return sign(payload, process.env.jwtSecret, { expiresIn: "1h" });
+  return sign(payload, `${process.env.JWT_SECRET_KEY}`, { expiresIn: "1h" });
 };

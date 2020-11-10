@@ -8,28 +8,33 @@ import { FaAngleLeft, FaAngleDoubleRight, FaUserPlus } from "react-icons/fa";
 
 import "../static/styles/register.scss";
 import "react-toastify/dist/ReactToastify.min.css";
+import { url } from "../utils/apiUrl";
 
 interface AuthProps {
   setAuth: (bool: Boolean) => void;
 }
 
 export default function Register({ setAuth }: AuthProps) {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/auth/register", {
+      const response = await fetch(`${url}/auth/register`, {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
+        mode: "cors",
         body: JSON.stringify({ name, email, password }),
       });
 
       const parseRes = await response.json();
+
+      console.log("response: ", parseRes);
 
       if (parseRes.jwtToken) {
         localStorage.clear();

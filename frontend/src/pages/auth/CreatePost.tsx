@@ -1,16 +1,21 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
-
 import { FaAngleLeft, FaFolderPlus } from "react-icons/fa";
-
-import "../../static/styles/auth/createPost.scss";
 import { motion } from "framer-motion";
+
+import ReactLoading from "react-loading";
+import "../../static/styles/auth/createPost.scss";
+import changeFolder from "../../static/images/change-image.png";
+
+import { url } from "../../utils/apiUrl";
 
 export default function CreatePost() {
   const history = useHistory();
   const [description, setDescription] = useState("");
-  const [section, setSection] = useState<string>("meme");
+  const [section, setSection] = useState("meme");
   const [image, setImage] = useState<File>();
+  const [previewImage, setPreviewImage] = useState("");
+  const [isLoading, setIsloading] = useState(false);
 
   const handleSelectedImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
@@ -20,27 +25,41 @@ export default function CreatePost() {
     const selectedImage = e.target.files[0];
 
     setImage(selectedImage);
+
+    const imagePreview = URL.createObjectURL(selectedImage);
+
+    setPreviewImage(imagePreview);
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+    try {
+      setIsloading(true);
+      e.preventDefault();
 
-    if (image && description.length > 3) {
-      const data = new FormData();
+      if (image && description.length > 3) {
+        const data = new FormData();
 
-      data.append("description", description);
-      data.append("section", section);
-      data.append("image", image);
+        data.append("description", description);
+        data.append("section", section);
+        data.append("image", image);
 
-      await fetch("http://localhost:8080/create-post", {
-        method: "POST",
-        headers: {
-          token: localStorage.token,
-        },
-        body: data,
-      });
-
-      history.goBack();
+        await fetch(`${url}/create-post`, {
+          method: "POST",
+          headers: {
+            token: localStorage.token,
+          },
+          mode: "cors",
+          body: data,
+        })
+          .then(x => x.json())
+          .then(res =>
+            res === "A post was created" ? history.goBack() : setIsloading(false)
+          );
+      }
+      setIsloading(false);
+    } catch (err) {
+      setIsloading(false);
+      console.error(err.message);
     }
   };
 
@@ -67,17 +86,51 @@ export default function CreatePost() {
         </select>
         <label>Choose an image</label>
         <label htmlFor="image" className="image-selector">
-          <FaFolderPlus size={24} />
+          {previewImage.length > 0 ? (
+            <div>
+              <img
+                src={changeFolder}
+                alt="change-folder"
+                width="24px"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          ) : (
+            <div style={{ paddingTop: "1rem" }}>
+              <FaFolderPlus size={24} />
+            </div>
+          )}
         </label>
         <br />
+        {previewImage.length > 0 && (
+          <img
+            src={previewImage}
+            alt={previewImage}
+            width="64px"
+            style={{
+              objectFit: "cover",
+              maxHeight: "64px",
+              border: "1px solid black",
+              borderRadius: 5,
+            }}
+          />
+        )}
+        <br />
         <input type="file" onChange={handleSelectedImage} name="image" id="image" />
-
-        <motion.button
-          type="submit"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.9 }}>
-          Post
-        </motion.button>
+        {!isLoading ? (
+          <motion.button
+            type="submit"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.9 }}>
+            Post
+          </motion.button>
+        ) : (
+          <div
+            className="loading"
+            style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <ReactLoading color="#5f7b23" type="spin" />
+          </div>
+        )}
       </form>
       <div className="instructions">
         <small>

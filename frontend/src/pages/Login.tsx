@@ -8,6 +8,7 @@ import { transitionSpring } from "../utils/animationProps";
 
 import "react-toastify/dist/ReactToastify.min.css";
 import "../static/styles/login.scss";
+import { url } from "../utils/apiUrl";
 
 interface AuthProps {
   setAuth: (bool: Boolean) => void;
@@ -20,11 +21,13 @@ export default function Login({ setAuth }: AuthProps) {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch(`${url}/auth/login`, {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
+        mode: "cors",
         body: JSON.stringify({ email, password }),
       });
 

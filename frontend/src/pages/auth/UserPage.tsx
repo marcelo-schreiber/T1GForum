@@ -6,6 +6,7 @@ import { Header } from "../../components/Header";
 import { FaAngleLeft } from "react-icons/fa";
 
 import "../../static/styles/auth/userPage.scss";
+import { url } from "../../utils/apiUrl";
 
 interface Username {
   username: string;
@@ -32,11 +33,11 @@ export default function UserPage({ setAuth }: AuthProps) {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:8080/posts/${username}`)
+    fetch(`${url}/posts/${username}`)
       .then(x => x.json())
       .then(res => setUserPosts(res));
 
-    fetch("http://localhost:8080/username", {
+    fetch(`${url}/username`, {
       method: "GET",
       headers: {
         token: localStorage.token,

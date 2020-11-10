@@ -9,17 +9,23 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserPage from "./pages/auth/UserPage";
 import SinglePost from "./pages/auth/SinglePost";
+import { url } from "./utils/apiUrl";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false);
+
+  console.log(process.env.NODE_ENV);
 
   useEffect(() => {
     if (!localStorage.token) {
       return;
     }
-    fetch("http://localhost:8080/auth/verify", {
+    fetch(`${url}/auth/verify`, {
       method: "POST",
+      mode: "cors",
       headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
         token: localStorage.token,
       },
     })

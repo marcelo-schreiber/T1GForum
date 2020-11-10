@@ -6,6 +6,7 @@ import { CommentSection } from "../../components/CommentSection";
 import { FaUserCircle, FaAngleLeft } from "react-icons/fa";
 
 import "../../static/styles/auth/singlePost.scss";
+import { url } from "../../utils/apiUrl";
 
 interface IdParams {
   id: string;
@@ -38,15 +39,10 @@ export default function Comments() {
 
   // textarea input
   const [userComment, setUserComment] = useState("");
+  const [isUserSubmiting, setIsUserSubmiting] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/posts/content/${id}`)
-      .then(x => x.json())
-      .then(res => setSinglePost(res));
-  }, [id]);
-
-  useEffect(() => {
-    fetch("http://localhost:8080/username", {
+    fetch(`${url}/username`, {
       method: "GET",
       headers: {
         token: localStorage.token,
@@ -56,15 +52,22 @@ export default function Comments() {
       .then(res => setUsername(res));
   }, []);
 
+  useEffect(() => {
+    fetch(`${url}/posts/content/${id}`)
+      .then(x => x.json())
+      .then(res => setSinglePost(res));
+  }, [id, isUserSubmiting]);
+
   const handleCommentSubmit = (event: FormEvent) => {
     event.preventDefault();
-
-    fetch("http://localhost:8080/create-comment", {
+    fetch(`${url}/create-comment`, {
       method: "POST",
       headers: {
         token: localStorage.token,
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
+      mode: "cors",
       body: JSON.stringify({
         comment_author: username.name,
         content: userComment,
@@ -72,9 +75,11 @@ export default function Comments() {
       }),
     })
       .then(x => x.json())
-      .then(res => console.log(res));
-
-    window.location.reload();
+      .then(res => {
+        console.log(res);
+        setUserComment("");
+        setIsUserSubmiting(prev => !prev);
+      });
   };
 
   return (

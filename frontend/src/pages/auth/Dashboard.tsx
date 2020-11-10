@@ -8,6 +8,7 @@ import ReactLoading from "react-loading";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
 import "../../static/styles/auth/dashboard.scss";
+import { url } from "../../utils/apiUrl";
 
 interface PostItems {
   id: string;
@@ -33,7 +34,7 @@ export default function Dashboard({ setAuth }: AuthProps) {
   const [isLoading, setIsLoading] = useState<Boolean>(true);
 
   // pagination
-  const POSTS_PER_PAGE = 4;
+  const POSTS_PER_PAGE = 6;
   const [page, setPage] = useState(0);
 
   const filteredPosts = posts.filter(post => {
@@ -50,11 +51,11 @@ export default function Dashboard({ setAuth }: AuthProps) {
 
   // get username and all posts
   useEffect(() => {
-    fetch("http://localhost:8080/posts")
+    fetch(`${url}/posts`)
       .then(x => x.json())
       .then(res => setPosts(res));
 
-    fetch("http://localhost:8080/username", {
+    fetch(`${url}/username`, {
       method: "GET",
       headers: {
         token: localStorage.token,
