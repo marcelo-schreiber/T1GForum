@@ -7,9 +7,8 @@
   </a>
 
   <h3 align="center">T1GForum | Make posts in different sections, comment and see other users posts.</h3>
-  <p align="center">Since heroku doesn't allow permanent creation of files, it's impossible to host this website for free (I'd need to use AWS S3 or a similar service), thus, the images of the posts will be corrupted :( </p>
   <p align="center">
-    A website sample is hosted in https://t1gforum.netlify.app (Not fully working, but you can post something to see your image for 30 minutes or so).
+    A website sample is hosted in https://t1gforum.netlify.app (Now, it's fully working)
     <br />
     <br />
     <a href="https://t1gforum.netlify.app">View Demo</a>
@@ -38,11 +37,12 @@
 ### Backend:
 
 - NodeJS & Express
-- Typescript (Again...)
+- Typescript
 - PostgreSQL
 - Pg-pool (Connection to db)
 - JsonWebToken (JWT - authentication)
 - Multer (File upload)
+- Cloudinary (Store file in cloud)
 - Bcrypt (Hash user's password)
 
 - Deploy: heroku
