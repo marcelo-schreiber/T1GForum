@@ -11,6 +11,7 @@
     A website sample is hosted in https://t1gforum.netlify.app (Now, it's fully working)
     <br />
     <br />
+    .
     <a href="https://t1gforum.netlify.app">View Demo</a>
     ·
     <a href="mailto:marcelorissette15@gmail.com">Report Bug</a>
