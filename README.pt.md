@@ -7,9 +7,8 @@
   </a>
 
   <h3 align="center">T1GForum | Faça posts em diferentes assuntos, comente e veja posts de outros usuários.</h3>
-  <p align="center">Já que o heroku não permite a criação permanente de arquivos, é impossível manter um site totalmente funcional gratuitamente (precisaria-se de algo como o AWS S3), assim, as imagens dos posts estarão corrompidas :( </p>
   <p align="center">
-    Um website de exemplo está sendo hosteado em https://t1gforum.netlify.app (Não está 100% funcional, mas você pode publicar algo para ver seu post por cerca de 30 minutos).
+    Um website de exemplo está sendo hosteado em https://t1gforum.netlify.app (Agora, está funcionando).
     <br />
     <br />
     <a href="https://t1gforum.netlify.app">Ver demonstração</a>
@@ -43,6 +42,7 @@
 - Pg-pool (Conexão com a db)
 - JsonWebToken (JWT - autenticação)
 - Multer (Upload de arquivos)
+- Cloudinary (Upload imagens na cloud)
 - Bcrypt (Criptografar a senha do usuario)
 
 - Deploy: heroku
@@ -63,6 +63,11 @@ e um arquivo .env na raiz do projeto com o conteúdo:
 <p>PG_HOST=seu_host</p>
 <p>PG_PORT=sua_port</p>
 <p>PG_DATABASE=nome_da_database</p>
+
+<p>CLOUD_API_KEY=cloudinary_api_key</p>
+<p>CLOUD_API_SECRET=cloudinary_secret_api_key</p>
+<p>CLOUD_NAME=nome_do_cloudinary</p>
+
 <p>JWT_SECRET_KEY=uma_senha_qualquer</p>
 <br />
 - Instale todas as dependências nas pastas frontend e backend com o comando:
