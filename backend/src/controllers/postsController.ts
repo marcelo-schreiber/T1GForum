@@ -1,6 +1,7 @@
 import { pool } from "../config/db";
 import { Request, Response } from "express";
 import handleError from "../utils/errorResponse";
+import cloud from "../config/cloudinary";
 
 export default {
   async getAllPosts(req, res: Response) {
@@ -55,25 +56,25 @@ export default {
         return res.status(400).json({ message: "Bad request" });
       }
 
-      const usernameQuery = await pool.query(
-        "SELECT name FROM users WHERE user_id = $1",
-        [req.user]
-      );
+      cloud.uploader.upload(req.file.path, async (err, result) => {
+        const imageURL = result.url;
 
-      const username = usernameQuery.rows[0].name;
-      const imageURL =
-        process.env.NODE_ENV === "production"
-          ? `https://t1gforum.herokuapp.com/uploads/${req.file.filename}`
-          : `http://localhost:8080/uploads/${req.file.filename}`;
+        const usernameQuery = await pool.query(
+          "SELECT name FROM users WHERE user_id = $1",
+          [req.user]
+        );
 
-      const { description, section } = req.body;
+        const username = usernameQuery.rows[0].name;
 
-      await pool.query(
-        "INSERT INTO posts (author, image_path, description, section) VALUES ($1, $2, $3, $4)",
-        [username, imageURL, description, section]
-      );
+        const { description, section } = req.body;
 
-      return res.status(201).json("A post was created");
+        await pool.query(
+          "INSERT INTO posts (author, image_path, description, section) VALUES ($1, $2, $3, $4)",
+          [username, imageURL, description, section]
+        );
+
+        return res.status(201).json("A post was created");
+      });
     } catch (err) {
       console.error(err.message);
       handleError.handleServerError;

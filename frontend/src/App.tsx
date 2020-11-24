@@ -9,17 +9,18 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserPage from "./pages/auth/UserPage";
 import SinglePost from "./pages/auth/SinglePost";
+import ReactLoading from "react-loading";
 import { url } from "./utils/apiUrl";
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState<Boolean>(false);
-
-  console.log(process.env.NODE_ENV);
+  const [isAuthenticated, setIsAuthenticated] = useState<Boolean | undefined>(undefined);
 
   useEffect(() => {
     if (!localStorage.token) {
+      setIsAuthenticated(false);
       return;
     }
+
     fetch(`${url}/auth/verify`, {
       method: "POST",
       mode: "cors",
@@ -36,6 +37,22 @@ export default function App() {
   const setAuth = (bool: Boolean) => {
     setIsAuthenticated(bool);
   };
+
+  if (isAuthenticated === undefined) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <h2 style={{ color: "#FFF" }}>Loading</h2>
+        <ReactLoading color="#5f7b23" type="spin" />
+      </div>
+    );
+  }
 
   return (
     <>

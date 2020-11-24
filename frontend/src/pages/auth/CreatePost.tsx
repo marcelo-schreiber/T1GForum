@@ -7,6 +7,8 @@ import ReactLoading from "react-loading";
 import "../../static/styles/auth/createPost.scss";
 import changeFolder from "../../static/images/change-image.png";
 
+import { toast, ToastContainer } from "react-toastify";
+
 import { url } from "../../utils/apiUrl";
 
 export default function CreatePost() {
@@ -43,6 +45,11 @@ export default function CreatePost() {
         data.append("section", section);
         data.append("image", image);
 
+        const errorMessage = () => {
+          setIsloading(false);
+          toast.error("A problem has occured");
+        };
+
         await fetch(`${url}/create-post`, {
           method: "POST",
           headers: {
@@ -53,8 +60,11 @@ export default function CreatePost() {
         })
           .then(x => x.json())
           .then(res =>
-            res === "A post was created" ? history.goBack() : setIsloading(false)
-          );
+            res === "A post was created"
+              ? toast.success("Your post was created")
+              : errorMessage()
+          )
+          .catch(() => errorMessage());
       }
       setIsloading(false);
     } catch (err) {
@@ -65,6 +75,7 @@ export default function CreatePost() {
 
   return (
     <div className="create-post-content">
+      <ToastContainer />
       <button className="go-back" onClick={history.goBack}>
         <FaAngleLeft size={32} />
       </button>

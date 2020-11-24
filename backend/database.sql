@@ -9,6 +9,7 @@ CREATE TABLE posts (
     id BIGSERIAL PRIMARY KEY,
     author VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
-    section VARCHAR(100)
+    section VARCHAR(100),
+    image_path VARCHAR(255) NOT NULL,
     check(section = 'meme' or section = 'fenoxer' or section = 'anime' or section = 'art')
 );

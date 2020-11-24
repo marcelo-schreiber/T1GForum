@@ -4,13 +4,15 @@ import { Router } from "express";
 import { upload } from "./config/uploadConfig";
 import { validInfo } from "./middleware/validInfo";
 import { validJwt } from "./middleware/validJwt";
-
+import * as cors from "cors";
 // controllers
 import instaController from "./controllers/postsController";
 import authController from "./controllers/authController";
 import commentControler from "./controllers/commentController";
 
 export const router = Router();
+
+router.use(cors());
 
 router.get("/posts", instaController.getAllPosts);
 router.get("/posts/:author", instaController.getUserPosts);

@@ -51,10 +51,6 @@ export default function Dashboard({ setAuth }: AuthProps) {
 
   // get username and all posts
   useEffect(() => {
-    fetch(`${url}/posts`)
-      .then(x => x.json())
-      .then(res => setPosts(res));
-
     fetch(`${url}/username`, {
       method: "GET",
       headers: {
@@ -63,13 +59,14 @@ export default function Dashboard({ setAuth }: AuthProps) {
     })
       .then(x => x.json())
       .then(res => setUsername(res));
-  }, []);
 
-  useEffect(() => {
-    if (posts.length > 0) {
-      setIsLoading(false);
-    }
-  }, [posts]);
+    fetch(`${url}/posts`)
+      .then(x => x.json())
+      .then(res => {
+        setPosts(res);
+        setIsLoading(false);
+      });
+  }, []);
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSection(e.target.value);
