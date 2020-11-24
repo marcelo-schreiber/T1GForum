@@ -53,7 +53,7 @@
 
 # Installation
 
-- Create a database in your postgreSQL terminal and
+- Create a database in your postgreSQL terminal called "login" and
   a .env file in the root directory with the content
 
 <p>PG_USER=your_user</p>
@@ -61,7 +61,12 @@
 <p>PG_HOST=host</p>
 <p>PG_PORT=port</p>
 <p>PG_DATABASE=name_of_database</p>
-<p>JWT_SECRET_KEY=anySecretKey123</p>
+
+<p>CLOUD_API_KEY=cloudinary_api_key</p>
+<p>CLOUD_API_SECRET=cloudinary_secret_api_key</p>
+<p>CLOUD_NAME=name_of_cloudinarye</p>
+
+<p>JWT_SECRET_KEY=any_secret_key</p>
 <br />
 - Install all dependencies in frontend and backend using:
 
