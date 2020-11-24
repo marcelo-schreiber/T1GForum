@@ -11,6 +11,7 @@
     Um website de exemplo está sendo hosteado em https://t1gforum.netlify.app (Agora, está funcionando).
     <br />
     <br />
+    .
     <a href="https://t1gforum.netlify.app">Ver demonstração</a>
     ·
     <a href="mailto:marcelorissette15@gmail.com">Reportar um erro</a>
@@ -55,7 +56,7 @@
 - Clone o reposiório com 
 ### `git clone https://github.com/marcelo-schreiber/Hamburgy.git`
 
-- Crie uma base de dados no terminal do postgreSQL 
+- Crie uma base de dados no terminal do postgreSQL
 e um arquivo .env na raiz do projeto com o conteúdo:
 
 <p>PG_USER=seu_usuario</p>
@@ -69,6 +70,7 @@ e um arquivo .env na raiz do projeto com o conteúdo:
 <p>CLOUD_NAME=nome_do_cloudinary</p>
 
 <p>JWT_SECRET_KEY=uma_senha_qualquer</p>
+
 <br />
 - Instale todas as dependências nas pastas frontend e backend com o comando:
 
