@@ -3,7 +3,7 @@
 <!-- about -->
 <p align="center">
   <a href="https://t1gforum.netlify.app">
-    <img src="https://cdn.discordapp.com/attachments/757300282714620096/772898698660806656/LogoPain.png" width="220px" />
+    <img src="https://cdn.discordapp.com/attachments/685226653764550671/796560842744135690/T1GForum_1.gif" width="220px" />
   </a>
 
   <h3 align="center">T1GForum | Make posts in different sections, comment and see other users posts.</h3>
